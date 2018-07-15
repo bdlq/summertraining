@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试</title>
+	<script src = "js/jquery-3.2.1.min.js"></script>
+	<script src = "js/test.js"></script>
+	<style type="text/css">
+	 	.red{
+	 		position:absolute;
+	 		background:red;
+	 		height:250px;
+	 		width:250px;
+	 	}
+	 	.blue{
+	 		position:absolute;
+	 		background:blue;
+	 		height:250px;
+	 		width:250px;
+	 		/*z-index:-1;*/
+	 	}
+	 	.parent2{
+	 		border:1px blue solid;
+			height:300px;
+	 		width:300px;
+	 		background:#564688;
+	 		opacity:0.7;
+	 		transform:rotate(-25deg);
+	 		transform:skew(0deg,30deg); /*第一个是*/
+	 	}
+	 	.parent1{
+	 		border:1px red solid;
+	 		height:300px;
+	 		width:300px;
+	 		background:#895245;
+
+	 		transition:opacity 0.5s,height 2s,width 2s, transform 2s;transition-timing-function:ease;
+	 		transition-delay:0s; /*必须放在最后,没有动画积累hover的两个过程都要延迟，不到两秒不触发*/
+	 	}
+	 	.parent1:hover{
+	 		height:500;
+	 		width:500;
+	 		transform:rotate(30deg)  
+			scale(0.5,0.5)
+			skew(30deg,20deg)
+			translate(-30px,10px); /*旋转 缩放 倾斜 平移*/
+			opacity:0.7;
+	 	}
+	 	.parent3{
+	 		border:1px green solid;
+	 		height:300px;
+	 		width:300px;
+	 		background:green;
+	 		opacity:0.7;
+	 		transform:rotateX(50deg) rotateY(30deg);
+	 		/*perspective:1000px;*/
+	 	}
+	 	.parent3 > .kid{
+	 		transform:rotateX(50deg) rotateY(30deg);
+	 	}
+	 	.parent4{
+	 		border:1px hotpink solid;
+	 		float:left;
+	 		/*animation:myfirst 3s;*/
+	 		animation-name:myfirst;
+	 		animation-duration:3s; 
+	 	}
+	 	h2{
+	 		float:left;
+	 	}
+	 	h3{
+	 		background:red;
+	 		opacity:0.6;
+	 		height:100px;
+	 		width:150px;
+
+	 	}
+	 	 @keyframes myfirst
+	 	{
+	 		from{
+	 			background:white;
+	 			height:150px;
+	 			width:150px;
+	 			opacity:1;
+	 		}
+	 		to{
+	 			background:hotpink;
+	 			height:300px;
+	 			width:300px;
+	 			opacity:0.7; 
+	 			transform:rotateY(45deg) translate(500px,500px);
+	 		}
+	 	}
+	 	@-webkit-keyframes
+	 	{
+	 		from{
+	 			background:white;
+	 			height:150px;
+	 			width:150px;
+	 			opacity:1;
+	 		}
+	 		to{
+	 			background:hotpink;
+	 			height:300px;
+	 			width:300px;
+	 			opacity:0.7; 
+	 			transform:rotateY(45deg) translate(500px,500px);
+	 		}
+	 	} 
+	 	/*animation属性不会脱离文档流，在文档流中只有宽高会影响其他元素。translate移动只是表面上移动。动画和js实现的动画不会冲突，因为他们是独立的。另外position脱离文档流后，只有relative的文档流分身会因为宽高变化影响其他因素，如果是absolute，则是完全独立的，因为脱离文档流的元素可以互相重合。如果是float则影响同是float的元素，完全不会影响到文档流中的和通过position脱离文档流的元素。（会因为排版结构也许会影响到文档流中的文字，毕竟文档流中的元素会自动躲避开float元素的...*/
+	 	.parent5{
+	 		position:relative;
+	 		border:#254654 2px solid;
+	 		height:200px;
+	 		width:200px;
+	 		background:pink;
+	 		opacity:0.5;
+	 		animation-name:fang;
+	 		animation-duration:5s;
+	 		animation-delay:1s;
+	 		animation-timing-function:linear;
+	 		animation-direction:alternate;
+	 		animation-iteration-count:infinite;
+	 		animation-play-state:running;
+	 		/*↓safari and chrome↓*/
+	 		-webkit-animation-name:fang;
+	 		-webkit-animation-duration:5s;
+	 		-webkit-animation-delay:1s;
+	 		-webkit-animation-timing-function:linear;
+	 		-webkit-animation-direction:alternate;
+	 		-webkit-animation-iteration-count:infinite;
+	 		-webkit-animation-play-state:running;
+	 	}
+	 	@keyframes fang
+	 	{
+			0%{
+				border:#254654 2px solid;
+		 		height:200px;
+		 		width:200px;
+		 		background:pink;
+		 		opacity:0.5;
+			}
+			25%{
+				left:500px;
+				top:0px;
+				background:blue;
+				opacity:1;
+			}
+			50%{
+				left:500px;
+				top:500px;
+				background:red;
+				opacity:0.5;
+			}
+			75%{
+				left:0px;
+				top:500px;
+				background:green;
+				opacity:1;
+			}
+			100%{
+				left:0px;
+				top:0px;
+				background:pink;
+				opacity:0.5;
+			}
+	 	}
+	 	@-webkit-keyframes fang
+	 	{
+			0%{
+		 		background:pink;
+		 		opacity:0.5;
+		 		left:0px;
+		 		top:0px;
+			}
+			25%{
+				left:500px;
+				top:0px;
+				background:blue;
+				opacity:1;
+			}
+			50%{
+				left:500px;
+				top:500px;
+				background:red;
+				opacity:0.5;
+			}
+			75%{
+				left:0px;
+				top:500px;
+				background:green;
+				opacity:1;
+			}
+			100%{
+				left:0px;
+				top:0px;
+				background:pink;
+				opacity:0.5;
+			}
+	 	}
+	 	.bdiv
+{
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation-name:myfirst;
+	animation-duration:5s;
+	animation-timing-function:linear;
+	animation-delay:2s;
+	animation-iteration-count:infinite;
+	animation-direction:alternate;
+	animation-play-state:running;
+	/* Safari and Chrome: */
+	-webkit-animation-name:myfirst;
+	-webkit-animation-duration:5s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+	-webkit-animation-play-state:running;
+}
+
+@keyframes myfirst
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+	</style>
+</head>
+<body>
+<!-- 	<div class = "red"></div>
+<div class = "blue"></div> -->
+	<div class = "parent1">
+		<div class = "kid"></div>
+	</div>
+	<div class = "parent2">
+		<div class = "kid"><h1>这是第二个方块</h1></div>
+	</div>
+	<div class = "parent3">
+		<div class = "kid"><h1>这是第三个方块</h1></div>
+	</div>
+	<!-- <div class = "parent4">
+		<div class = "kid"><h1>这是第四个方块</h1></div>
+	</div>
+	<h2>长春华莱士阿斯我当时的</h2> -->
+	<!-- <button>按钮</button> -->
+	<hr />
+	<div class = "parent5">
+		<div class = "kid"><h1>这是第五个方块</h1></div>
+	</div>
+	<h1>这是一行文字，他应该不会动才对吧</h1>
+	<hr />
+	<div class = "bdiv"></div>
+</body>
+</html>
+

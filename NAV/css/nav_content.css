@@ -1,0 +1,58 @@
+div.float-boxes{
+	position:absolute;
+	left:100px;
+	top:30px;
+	border:2px red solid;  /*可以打开边框*/
+	/*width:700px;*/
+}
+div.float-boxes a.float-container{
+	float:left;
+	border:2px blue solid;
+	height:250px;
+	width:320px;
+	/*margin:15px;*/
+	padding-bottom:10px;
+	padding-right:15px;
+}
+
+div.float-boxes [class |= "float-box"]{	
+	line-height:150px;   /*控制中间序号垂直居中*/
+	font-size:30px;		 /*控制中间文字垂直居中*/
+	display:inline-block;
+	border:1px solid #B7B7B7; /*灰色，很适合做自然边框的颜色*/
+	border-radius:10px;
+	height:150px;
+	width:300px;
+	margin:15px;
+	background:#ffffff;  /*白色*/
+	box-shadow:0px 0px 10px #888888;
+	transition:width 0.5s,height 0.5s,box-shadow 0.5s;  /*当一个div被抬起时尺寸变大无论如何都会使同一行的div下降，暂时不清楚如何解决*/
+}
+ div.float-boxes a.float-container:hover div[class |= "float-box"]
+{
+	height:160px;
+	width:310px;
+	box-shadow:0px 0px 40px #666666;
+} 
+div.explain-1 {
+	border:2px black solid;
+}
+div.next-box{
+	border:green solid 2px;
+	height:150px;
+	position:absolute;
+	top:60%;
+	width:500px;
+}
+@keyframes floatUp {
+	0%{
+		height:150px;
+		width:300px;
+		box-shadow:0px 0px 10px #888888;
+	}
+	100%{
+		height:160px;
+		width:310px;
+		box-shadow:0px 0px 40px #666666;
+	}
+}

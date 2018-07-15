@@ -1,0 +1,26 @@
+1.var_dump(); 会返回变量的数据类型和值
+2.strlen(); 返回字符串的长度，以字符计。
+3.strpos(); 用于检索字符串内指定的字符或文本。返回的是索引，开头是0；
+4.define("GREETING","Welcome","false"); 设置常量，常量的变量名前面没有$，第一个参数
+是变量名，第二个是值，第三个是对不对大小写敏感，默认是false。
+5.foreach($arr1 as $x => $arr2){}; 该循环只适用于数组，$arr1的每一个值会单次的存放在$arr2中。
+6.sum(2,3); 求2+3的和;
+7.count(); 获得数组的长度。
+8.sort(); 以升序对数组排序。
+  rsort(); 以降序对数组排序。
+  asort(); 根据值，以升序对关联数组进行排序。
+  ksort(); 根据键，以升序对关联数组进行排序。
+  krsort()；根据键，以降序对关联数组进行排序。
+  arsort()；根据值，以降序对关联数组进行排序。
+9.empty(); 判断变量是否为空；
+10.test_input(); 发送用户输入数据。
+11.readfile(); readfile()函数读取文件，并把它写入输出缓冲。
+12.setcookie("name","value",time()+3600); //设置cookie
+13.$_COOKIE["name"] 变量用于取回cookie数据；
+14.isset() 用来确认是否已经设置了cookie；
+15.setcookie("name","",time()-3600); 用于删除cookie;
+16.session_start()； 函数必须位于<html>标签之前：
+    <?php session_start();?>
+17.unset("$_SESSION['name']"); 释放指定的session变量。
+   session_destory(); 函数彻底终结session。
+18.die(); 返回错误信息，并且不终止程序，常常和if相结合使用。
